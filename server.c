@@ -13,7 +13,7 @@ void	sig_hanusr(int sig)
 	//printf("sig: %i, signal: %i\n", sig, (sig & 1) << count);
 	if (count == 7)
 	{
-		printf("%c", c);
+		write(1, &c, 1);
 		count = 0;
 		c = 0;
 	}
