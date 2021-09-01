@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:05:21 by jestevam          #+#    #+#             */
-/*   Updated: 2021/08/31 23:39:33 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/09/01 11:27:02 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int send_mssg(int pid,char *mssg, int len_mssg)
 				kill(pid,SIGUSR1);
 			else
 				kill(pid,SIGUSR2);
-			usleep(100);
+			usleep(200);
 			bit++;
 		}
 		bit = 0;

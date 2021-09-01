@@ -1,7 +1,7 @@
 all: test
 
 serv: 
-	clang server.c -o serv && ./serv
+	clang -fsanitize=address server.c -o serv && ./serv
 
-client: 
-	clang main.c -o test && ./test 32057  "porco velho" 
+client:
+	clang main.c -o test && ./test 6445 😇 
