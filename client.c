@@ -6,15 +6,11 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:05:21 by jestevam          #+#    #+#             */
-/*   Updated: 2021/09/01 11:27:02 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/09/01 18:56:52 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "minitalk.h"
 
 void print_resp(int sig)
 {
@@ -55,6 +51,6 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	signal(SIGUSR1, print_resp);
-	pid = atoi(argv[1]);
-	send_mssg(pid, argv[2], strlen(argv[2]));
+	pid = ft_atoi(argv[1]);
+	send_mssg(pid, argv[2], ft_strlen(argv[2]));
 }

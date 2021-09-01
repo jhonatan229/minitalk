@@ -1,25 +1,16 @@
-#include <signal.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/01 18:42:51 by jestevam          #+#    #+#             */
+/*   Updated: 2021/09/01 19:03:17 by jestevam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static char c;
-static size_t count;
-static char *msg;
-static int n_str;
-
-size_t    ft_strlen(char *s)
-{
-    size_t    len;
-
-    len = 0;
-    if (!s)
-        return (0);
-    while (s[len])
-        len++;
-    return (len);
-}
+#include "minitalk.h"
 
 static char *store_char(char *str, char c)
 {
@@ -51,24 +42,26 @@ static char *store_char(char *str, char c)
 
 void	sig_hanusr(int sig, siginfo_t *info, void *context)
 {
-	if (sig == 10)
+	static size_t count;
+	static char c;
+	static char *msg;
+
+	(void) context;
+	if (sig == SIGUSR1)
 		c += 1 << count;
 	count++;
 	//printf("sig: %i, signal: %i\n", sig, (sig & 1) << count);
 	if (count == 7)
 	{
-		n_str++;
 		//write(1, &c, 1);
-		printf("mano\n");
 		if (c)
 			msg = store_char(msg, c);
 		else
 		{
 			write(1, msg, ft_strlen(msg));
-			printf("n = %i\n", n_str);
+			write(1, "\n", 1);
 			free(msg);
 			msg = NULL;
-			n_str = 0;
 			kill(info->si_pid, SIGUSR1);
 		}
 		count = 0;
@@ -78,15 +71,14 @@ void	sig_hanusr(int sig, siginfo_t *info, void *context)
 
 int main()
 {
-	c = 0;
-	count = 0;
-	n_str = 0;
 	printf("pid? %d\n", getpid());
 	struct sigaction	sig;
 	sig.sa_sigaction = sig_hanusr;
 	sig.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &sig, NULL);
-	sigaction(SIGUSR2, &sig, NULL);
+	if (sigaction(SIGUSR1, &sig, NULL) == -1)
+		return (1);
+	if (sigaction(SIGUSR2, &sig, NULL) == -1)
+		return (1);
 	while(1)
 		pause();
 }
