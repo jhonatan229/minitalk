@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:05:21 by jestevam          #+#    #+#             */
-/*   Updated: 2021/09/02 18:28:54 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/09/02 18:35:38 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_resp(int sig)
 	exit(1);
 }
 
-int	send_mssg(int pid,char *mssg, int len_mssg)
+int	send_mssg(int pid, char *mssg, int len_mssg)
 {
 	int	count;
 	int	bit;
@@ -31,9 +31,9 @@ int	send_mssg(int pid,char *mssg, int len_mssg)
 		while (bit < 8)
 		{
 			if ((mssg[count] >> bit) & 1)
-				kill (pid,SIGUSR1);
+				kill(pid, SIGUSR1);
 			else
-				kill (pid,SIGUSR2);
+				kill(pid, SIGUSR2);
 			usleep(200);
 			bit++;
 		}

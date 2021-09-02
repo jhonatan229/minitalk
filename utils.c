@@ -6,15 +6,16 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 18:41:32 by jestevam          #+#    #+#             */
-/*   Updated: 2021/09/02 00:22:18 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/09/02 18:34:49 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <unistd.h>
+#include <stdio.h>
 
 size_t	ft_strlen(char *s)
 {
-	size_t    len;
+	size_t	len;
 
 	len = 0;
 	if (!s)

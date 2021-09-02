@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 18:42:51 by jestevam          #+#    #+#             */
-/*   Updated: 2021/09/02 00:34:08 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/09/02 18:31:59 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ void	sig_hanusr(int sig, siginfo_t *info, void *context)
 	}
 }
 
-int main()
+int	main(void)
 {
-	struct	sigaction	sig;
+	struct	sigaction sig;
 
 	write(1, "PID: ", 5);
 	ft_putnbr_fd(getpid(), 1);
