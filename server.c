@@ -12,10 +12,10 @@
 
 #include "minitalk.h"
 
-static char *store_char(char *str, char c)
+static char	*store_char(char *str, char c)
 {
-	char *tmp;
-	int i;
+	char	*tmp;
+	int		i;
 
 	tmp = malloc(ft_strlen(str) + 2);
 	if (tmp == NULL)
@@ -42,18 +42,16 @@ static char *store_char(char *str, char c)
 
 void	sig_hanusr(int sig, siginfo_t *info, void *context)
 {
-	static size_t count;
-	static char c;
-	static char *msg;
+	static size_t	count;
+	static char		c;
+	static char		*msg;
 
 	(void) context;
 	if (sig == SIGUSR1)
 		c += 1 << count;
 	count++;
-	//printf("sig: %i, signal: %i\n", sig, (sig & 1) << count);
 	if (count == 8)
 	{
-		//write(1, &c, 1);
 		if (c)
 			msg = store_char(msg, c);
 		else
@@ -71,8 +69,8 @@ void	sig_hanusr(int sig, siginfo_t *info, void *context)
 
 int main()
 {
-	struct sigaction	sig;
-	
+	struct	sigaction	sig;
+
 	write(1, "PID: ", 5);
 	ft_putnbr_fd(getpid(), 1);
 	write(1, "\n", 1);
@@ -82,6 +80,6 @@ int main()
 		return (1);
 	if (sigaction(SIGUSR2, &sig, NULL) == -1)
 		return (1);
-	while(1)
+	while (1)
 		pause();
 }
