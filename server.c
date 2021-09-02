@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 18:42:51 by jestevam          #+#    #+#             */
-/*   Updated: 2021/09/01 19:03:17 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/09/02 00:34:08 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,11 @@ void	sig_hanusr(int sig, siginfo_t *info, void *context)
 
 int main()
 {
-	printf("pid? %d\n", getpid());
 	struct sigaction	sig;
+	
+	write(1, "PID: ", 5);
+	ft_putnbr_fd(getpid(), 1);
+	write(1, "\n", 1);
 	sig.sa_sigaction = sig_hanusr;
 	sig.sa_flags = SA_SIGINFO;
 	if (sigaction(SIGUSR1, &sig, NULL) == -1)

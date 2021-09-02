@@ -6,7 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-size_t    ft_strlen(char *s);
+size_t	ft_strlen(char *s);
 int		ft_atoi(const char *nptr);
+void	ft_putnbr_fd(int nb, int fd);
 
 #endif

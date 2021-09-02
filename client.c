@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:05:21 by jestevam          #+#    #+#             */
-/*   Updated: 2021/09/01 18:56:52 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/09/02 00:45:34 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,7 @@ int main(int argc, char **argv)
 	signal(SIGUSR1, print_resp);
 	pid = ft_atoi(argv[1]);
 	send_mssg(pid, argv[2], ft_strlen(argv[2]));
+	while (1)
+		pause();
+	return (0);
 }
