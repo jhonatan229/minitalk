@@ -51,7 +51,7 @@ void	sig_hanusr(int sig, siginfo_t *info, void *context)
 		c += 1 << count;
 	count++;
 	//printf("sig: %i, signal: %i\n", sig, (sig & 1) << count);
-	if (count == 7)
+	if (count == 8)
 	{
 		//write(1, &c, 1);
 		if (c)

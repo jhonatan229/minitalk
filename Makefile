@@ -9,6 +9,7 @@ OBJ_SERVER = $(FILES_S:.c=.o)
 OBJ_CLIENT = $(FILES_C:.c=.o)
 
 all: $(SERVER) $(CLIENT)
+bonus: all
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror

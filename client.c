@@ -16,6 +16,7 @@ void print_resp(int sig)
 {
 	(void)sig;
 	write(1, "SEND MESSAGE!\n", 14);
+	exit(1);
 }
 
 int send_mssg(int pid,char *mssg, int len_mssg)
@@ -27,9 +28,8 @@ int send_mssg(int pid,char *mssg, int len_mssg)
 	bit = 0;
 	while (count <= len_mssg)
 	{
-		while (bit < 7)
+		while (bit < 8)
 		{
-			//printf("casa: %i: %i\n", bit, (mssg[count] >> bit) & 1);
 			if ((mssg[count] >> bit) & 1)
 				kill(pid,SIGUSR1);
 			else
